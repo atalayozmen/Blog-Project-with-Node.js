@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container bg-dark">
+      <form action="/posts/new">
+        <button class="btn-primary rounded border-0 my-2" type="submit">New Post</button>
+      </form>
+
+      <% posts.forEach(post =>{ %>
+
+      <div class="card my-5">
+        <h2><%=post.title %></h1>
+        <p><%=post.description%></p>
+        <p><%= post.createdAt.toLocaleDateString() %></p>
+        <a href="posts/<%= post.slug %>" class="btn-primary">Read More</a>
+
+        <form
+          action="/posts/<%= post._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn-primary rounded border-0 my-2" type="submit">Delete</button>
+        </form>
+
+        <h3> Comments</h3>
+        <% post.comments.forEach( comment => { %>
+            <div class="bg-info">
+                <p><%= comment.content %></p>
+            </div>
+
+        <form
+          action="/posts/<%= post._id %>/<%= comment._id%>?_method=DELETE"
+          method="POST"
+        >
+          <button class="btn-primary rounded border-0 my-2" type="submit">Delete Comment</button>
+        </form>
+
+        <% }) %>
+
+        <form class="my-3"action="/posts/<%= post._id %>" method="POST">
+          <input class="form-control" name="comment" id="comment" />
+          <button class="btn-primary rounded border-0 my-2" type="submit">Add comment</button>
+        </form>
+      </div>
+
+      <% }) %>
+    </div>
+  </body>
+</html>
