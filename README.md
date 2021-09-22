@@ -15,6 +15,8 @@ Other endpoints are working well.
 
 To have a website experience, just go to http://localhost:5000 and interact with the website using the user interface.
 
+I did not upload the node_modules, so run the command "npm install" first to download the dependencies.
+
 Important note: I didn't add id area myself because mongoose already adds id to it's database items.
 
 Dependencies I used and why I used them:
