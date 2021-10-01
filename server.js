@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Post = require("./models/post.js");
 require('dotenv').config();
-mongoose.connect("mongodb://localhost/blogdb" || process.env.MONGODB_URL);
+mongoose.connect("mongodb://localhost/blogdb" || process.env.MONGODB_URI);
 const methodOverride = require("method-override");
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express')
