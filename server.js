@@ -31,10 +31,11 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
 app.get("/", async (req, res) => {
-  console.log("test");
+  
   try{
     const posts = await Post.find().sort({ createdAt: "desc" });  //sorts posts according to the date
   res.render("posts/index", { posts: posts });
+  console.log("try");
   }
   catch(e){
       console.log("exception");
