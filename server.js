@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Post = require("./models/post.js");
+require('dotenv').config();
 mongoose.connect("mongodb://localhost/blogdb" || process.env.MONGODB_URL);
 const methodOverride = require("method-override");
 const swaggerJsDoc = require('swagger-jsdoc');
