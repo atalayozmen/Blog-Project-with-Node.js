@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Post = require("./models/post.js");
-mongoose.connect("mongodb://localhost/blogdb");
+mongoose.connect(process.env.MONGODB_URI);
 const methodOverride = require("method-override");
 const swaggerJsDoc = require('swagger-jsdoc');
 const swaggerUI = require('swagger-ui-express')
