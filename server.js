@@ -9,6 +9,8 @@ const postRouter = require("./routes/posts.js");
 const apiRouter = require("./routes/api.js");
 const app = express();
 
+const port = process.env.port || 5000;
+
 app.use(express.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
@@ -34,6 +36,6 @@ app.get("/", async (req, res) => {
   res.render("posts/index", { posts: posts });
 });
 
-app.listen(5000);
+app.listen(port);
 app.use("/api", apiRouter);
 app.use("/posts", postRouter);

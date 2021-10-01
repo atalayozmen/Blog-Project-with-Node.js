@@ -12,11 +12,19 @@ const router = express.Router();
  *      responses:
  *          200:
  *              description: Success
+ *          400: 
+ *              description: Server error
  */
 
 router.get("/posts", async (req, res) => {
-  const post = await Post.find();
-  res.send(post);
+    try{
+        const post = await Post.find();
+        res.status(200).send(post);
+    }
+    catch(e){
+        res.status(400).send("Server error")
+    }
+
 });
 
 /**
