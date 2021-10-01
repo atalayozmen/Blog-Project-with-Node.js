@@ -36,6 +36,6 @@ app.get("/", async (req, res) => {
   res.render("posts/index", { posts: posts });
 });
 
-app.listen(port);
+app.listen(process.env.PORT || 5000);
 app.use("/api", apiRouter);
 app.use("/posts", postRouter);
