@@ -32,8 +32,14 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.get("/", async (req, res) => {
   console.log("test");
-  const posts = await Post.find().sort({ createdAt: "desc" });  //sorts posts according to the date
+  try{
+    const posts = await Post.find().sort({ createdAt: "desc" });  //sorts posts according to the date
   res.render("posts/index", { posts: posts });
+  }
+  catch(e){
+      console.log("exception");
+  }
+  
 });
 
 app.listen(process.env.PORT || 5000);
